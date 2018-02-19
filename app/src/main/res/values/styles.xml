@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DetailLinearLayout">
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="DetailTV">
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
 </resources>
