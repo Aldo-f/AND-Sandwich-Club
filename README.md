@@ -31,3 +31,5 @@ All used sources should be found here.
 * https://www.tutorialspoint.com/android/android_json_parser.htm
 * https://www.javacodegeeks.com/2013/10/android-json-tutorial-create-and-parse-json-data.html
 * http://json.parser.online.fr/ 
+* https://review.udacity.com/#!/reviews/1045542 
+* https://jakewharton.github.io/butterknife/

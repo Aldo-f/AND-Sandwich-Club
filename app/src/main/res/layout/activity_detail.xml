@@ -1,89 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.udacity.sandwichclub.DetailActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/sandwich_picture_content_description"
+            android:scaleType="centerCrop" />
 
         <LinearLayout
+            style="@style/DetailLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/image_iv"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/sandwich_picture_content_description"
-                android:scaleType="centerCrop" />
-
             <LinearLayout
-                style="@style/DetailLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!--Also know as-->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_also_known_as_label"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/also_known_tv"
-                        style="@style/DetailTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <!--ingridients-->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_ingredients_label"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/ingredients_tv"
-                        style="@style/DetailTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <!--origin-->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_place_of_origin_label"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/origin_tv"
-                        style="@style/DetailTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <!--Description-->
+                <!--Also know as-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/detail_description_label"
+                    android:text="@string/detail_also_known_as_label"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/description_tv"
+                    android:id="@+id/also_known_tv"
+                    style="@style/DetailTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!--ingridients-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_ingredients_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ingredients_tv"
+                    style="@style/DetailTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!--origin-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_place_of_origin_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/origin_tv"
+                    style="@style/DetailTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <!--Description-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_description_label"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+    </LinearLayout>
+</ScrollView>

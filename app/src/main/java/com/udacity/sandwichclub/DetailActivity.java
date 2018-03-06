@@ -11,29 +11,43 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    // with the use of ButterKnife
+    // Same as the XML
+    @BindView(R.id.image_iv)
+    ImageView ingredientsIv;
+    @BindView(R.id.also_known_tv)
+    TextView alsoKnownAs;
+    @BindView(R.id.ingredients_tv)
+    TextView ingredients;
+    @BindView(R.id.description_tv)
+    TextView description;
+    @BindView(R.id.origin_tv)
+    TextView placeOfOrigin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        // same as on xml
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
-        TextView integrated = findViewById(R.id.ingredients_tv);
-        TextView description = findViewById(R.id.description_tv);
-        TextView placeoforgin = findViewById(R.id.origin_tv);
-        TextView alsoKnownAs = findViewById(R.id.also_known_tv);
-
+        // Bind ButterKnife
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
         }
 
+        //Removes the possibility to produce a NullPointException
+        assert intent != null;
         int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
         if (position == DEFAULT_POSITION) {
             // EXTRA_POSITION not found in intent
@@ -53,14 +67,28 @@ public class DetailActivity extends AppCompatActivity {
         populateUI();
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .placeholder(R.drawable.placeholder) // Show placeholder (this is always some time visible (loading time?))
+                .error(R.drawable.placeholder) // Shown on error
                 .into(ingredientsIv);
 
         // SetText
         setTitle(sandwich.getMainName());
-        integrated.setText(sandwich.getIngredients().toString().replace("[","").replace("]", ""));
-        alsoKnownAs.setText(sandwich.getAlsoKnownAs().toString().replace("[","").replace("]", ""));
+        ingredients.setText(listModel(sandwich.getIngredients()));
+        alsoKnownAs.setText(listModel(sandwich.getAlsoKnownAs()));
         description.setText(sandwich.getDescription());
-        placeoforgin.setText(sandwich.getPlaceOfOrigin());
+        placeOfOrigin.setText(sandwich.getPlaceOfOrigin());
+    }
+
+    // iterate trough the list items
+    public StringBuilder listModel(List<String> list) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            stringBuilder.append(list.get(i));
+            if (i < list.size() - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+        return stringBuilder;
     }
 
     private void closeOnError() {
